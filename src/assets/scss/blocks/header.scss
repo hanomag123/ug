@@ -1,16 +1,90 @@
+
 .header {
-  position: fixed;
   width: 100%;
-  transition: transform .3s;
-  will-change: transform;
+
+  position: sticky;
+  z-index: 10;
   top: 0;
   left: 0;
-  z-index: 20;
+  transition: transform .3s, background-color .3s;
+
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 
   @include breakpoint($xl-bp) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.7rem;
   }
 }
 
+.header--active {
+  background-color: #CEFDBD;
+}
+
 .out {
-  transform: translate3d(0, calc(-100% - 1rem), 0);
+  transform: translate3d(0, -100%, 0);
+  @include breakpoint($xl-bp) {
+    transform: translate3d(0, calc(-100% + var(--headerH)), 0);
+  }
+
+}
+
+.header__logo {
+  width: 14.9rem;
+  height: 5rem;
+  display: block;
+  @include breakpoint($xl-bp) {
+    position: relative;
+    z-index: 15;
+  }
+  @include breakpoint($sm-bp) {
+    width: 10.4rem;
+    height: 3.5rem;
+  }
+}
+
+.search-form {
+  position: relative;
+  width: 40rem;
+  margin-left: 35.5rem;
+
+  @include breakpoint($xl-bp) {
+    width: 100%;
+    margin-left: 0;
+    grid-column: 2 span;
+  }
+}
+
+.search-input {
+  width: 100%;
+  height: 4rem;
+  background-color: transparent;
+  border: 0.2rem solid var(--black);
+  border-radius: 0.5rem;
+  padding-right: 5rem;
+  padding-left: 1.5rem;
+  box-sizing: border-box;
+  transition: border-color .3s;
+  &:focus {
+    border-color: var(--green);
+    outline: none;
+  }
+}
+
+.search-button {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  &:hover {
+    svg {
+      fill: var(--green);
+    }
+  }
 }

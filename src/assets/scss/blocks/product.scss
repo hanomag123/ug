@@ -1,0 +1,295 @@
+.breadcrumbs {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  margin-top: 4.2rem;
+
+  @include breakpoint($sm-bp) {
+    margin-top: 1.6rem;
+  }
+
+  li {
+    display: inline;
+    margin-left: 0.3rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      a {
+        color: var(--green);
+      }
+
+      &::after {
+        content: unset;
+      }
+    }
+
+    &::after {
+      content: '';
+      width: 1.5rem;
+      height: 0.1rem;
+      background-color: var(--black);
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+  }
+}
+
+.product {
+  margin-top: 5.5rem;
+
+  @include breakpoint($xl-bp) {
+    margin-top: 4rem;
+  }
+}
+
+.product-top {
+  display: flex;
+  gap: 3rem;
+  align-items: baseline;
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+  flex-wrap: wrap;
+
+  @include breakpoint($sm-bp) {
+    row-gap: 1rem;
+  }
+}
+
+.product-company,
+.product-type {
+  @include breakpoint($xl-bp) {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+}
+
+.product-company {
+  margin-left: auto;
+  font-weight: 500;
+}
+
+.product-title {
+  font-weight: 700;
+
+  @include breakpoint($xl-bp) {
+    order: 1;
+  }
+}
+
+.product-subtitle {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 500;
+
+  @include breakpoint($xl-bp) {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+  }
+}
+
+.product-swiper-wrapper {
+  margin-top: 2.2rem;
+
+  @include breakpoint($sm-bp) {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 2rem;
+  }
+}
+
+.product-swiper {
+
+
+  .swiper-slide {
+    width: 100%;
+    position: relative;
+    will-change: transform, opacity;
+  }
+
+  .product-image {
+    border-radius: 1.3rem;
+    position: relative;
+    height: 63.3rem;
+
+    @include breakpoint($sm-bp) {
+      height: 25.1rem;
+    }
+  }
+
+  .product-color {
+    border: 0.2rem solid var(--black);
+    border-radius: 1.3rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 18.5rem;
+    height: 18.5rem;
+
+    @include breakpoint($xl-bp) {
+      width: 9.5rem;
+      height: 9.5rem;
+    }
+  }
+}
+
+.product-bot {
+  margin-top: 6rem;
+  display: grid;
+  grid-template-columns: 1.36fr 1fr;
+  column-gap: 19.3rem;
+  row-gap: 6rem;
+  grid-template-rows: min-content;
+
+  @include breakpoint($xl-bp) {
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
+  }
+}
+
+.product-colors-wrapper {
+  font-weight: 500;
+}
+
+.product-colors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-top: 2.5rem;
+
+  @include breakpoint($sm-bp) {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .product-color {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 100%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    @include breakpoint($sm-bp) {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      border: 0.2rem solid transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 100%;
+      transition: border-color .3s;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        &::before {
+          border-color: var(--green);
+        }
+      }
+    }
+
+    &.active {
+      &::before {
+        border-color: var(--green);
+      }
+    }
+  }
+}
+
+.product-pass-img {
+  margin-top: 2rem;
+  height: 26.5rem;
+
+  @include breakpoint($sm-bp) {
+    height: 10.1rem;
+  }
+}
+
+.product-desc {
+  grid-row: 2 span;
+
+  ul {
+    margin-top: 1rem;
+
+    @include breakpoint($sm-bp) {
+      font-size: 1.6rem;
+      line-height: 2rem;
+      margin-top: 1.4rem;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 1.5rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 0.1rem solid var(--black);
+      gap: 2rem;
+
+      &>div {
+        &:first-child {
+          min-width: 10.7rem;
+        }
+
+        &:last-child {
+          text-align: end;
+          padding-right: 0.3rem;
+
+          @include breakpoint($sm-bp) {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.product-button {
+  margin-top: 4.9rem;
+  width: 100%;
+
+  @include breakpoint($sm-bp) {
+    margin-top: 3rem;
+  }
+}
+
+.max-w-277 {
+  max-width: 27.7rem;
+}
+
+.max-w-778 {
+  max-width: 77.8rem;
+
+  @include breakpoint($sm-bp) {
+    max-width: 30.7rem;
+  }
+}
+
+.callback {
+  padding-top: 10rem;
+  display: grid;
+  grid-template-columns: 1.36fr 1fr;
+  column-gap: 19.3rem;
+  row-gap: 6rem;
+  border-top: 0.2rem solid var(--black);
+
+  @include breakpoint($xl-bp) {
+    grid-template-columns: 1fr;
+  }
+
+  @include breakpoint($sm-bp) {
+    padding-top: 6rem;
+    gap: 4rem;
+  }
+}

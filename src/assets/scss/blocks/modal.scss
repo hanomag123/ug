@@ -1,0 +1,96 @@
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 31, 31, 0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-block {
+  background: linear-gradient(180deg, rgba(128, 251, 85, 0.39) 0%, rgba(255, 255, 255, 0) 15.4%), #FFFFFF;
+  position: relative;
+  padding: 4rem;
+  padding-bottom: 6rem;
+  border-radius: 1.3rem;
+  @include breakpoint($sm-bp) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .page-button {
+    width: 100%;
+    margin-top: 5rem;
+    @include breakpoint($sm-bp) {
+      margin-top: 2rem;
+    }
+  }
+}
+
+.regModal {
+  transition: opacity .3s;
+}
+
+.modal-close {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  width: min-content;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  @include breakpoint($sm-bp) {
+    top: 2rem;
+    right: 1.5rem;
+  }
+  &:hover {
+    svg {
+      fill: var(--green);
+    }
+  }
+  svg {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: block;
+  }
+}
+
+.max-w-feedback {
+  max-width: 51.5rem;
+}
+
+.modal-title {
+  text-align: center;
+  margin-top: 3.8rem;
+}
+
+.modal-text {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.modal-politics {
+  height: 100%;
+}
+
+.max-w-politics {
+  max-width: 100rem;
+}
+
+.layout {
+  overflow: scroll;
+  height: 100%;
+  margin-top: 3rem;
+}
+
+.h-full {
+  height: 100%;
+}

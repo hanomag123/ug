@@ -1,11 +1,28 @@
-<header class="header">
-  {{> menu}}
+<header class="header container">
+  <a href="#" class="header__logo">
+    <svg>
+      <use href='#logoIcon'></use>
+    </svg>
+  </a>
 
   <button class="menu-button myclass">
-    <span class="burger-button-close">
-      <span id="first-line-burger"></span>
-      <span id="second-line-burger"></span>
-      <span id="third-line-burger"></span>
-  </span>
+    <span class="menu-button-inner">
+      <span class="burger-button-close">
+        <span id="first-line-burger"></span>
+        <span id="second-line-burger"></span>
+        <span id="third-line-burger"></span>
+      </span>
+    </span>
   </button>
+
+  <form action="#" class="search-form">
+    <input type="search" name="search" class="search-input">
+    <button type="submit" class="search-button">
+      <svg>
+        <use href='#searchIcon'></use>
+      </svg>
+    </button>
+  </form>
+
+  {{> menu}}
 </header>

@@ -11,9 +11,6 @@
 html {
   box-sizing: border-box;
   font-size: calc(100vw / 1920 * 10);
-  @include breakpoint($cos-bp) {
-    font-size: calc(100vw / 1440 * 10);
-  }
 
   @include breakpoint($xl-bp) {
     font-size: calc(100vw / 768 * 10);
@@ -24,16 +21,41 @@ html {
   }
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.page {
+  background: linear-gradient(180deg, rgba(128, 251, 85, 0.39) 0%, rgba(255, 255, 255, 0) 8%), #FFFFFF; 
+  height: 100%;
+  width: 100%;
+}
+
 
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+  font-family: 'Onest';
+  font-style: normal;
+  // outline: 0.1rem solid green;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  letter-spacing: -0.025em;
 
+  @include breakpoint($sm-bp) {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
 }
 
 img {
@@ -45,17 +67,157 @@ svg {
   transition: all 0.1s linear;
 }
 
+@import './blocks/swiper.scss';
+
+.container {
+  padding-right: 8rem;
+  padding-left: 8rem;
+
+  @include breakpoint($xl-bp) {
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
+
+  @include breakpoint($sm-bp) {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  &.--gallery {
+    padding-right: 0;
+    @include breakpoint($sm-bp) {
+      padding-left: 0;
+    }
+  }
+}
+
+.img-contain {
+  display: block;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.img-cover {
+  display: block;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+h1,
+.h1 {
+  font-weight: 500;
+  font-size: 9rem;
+  line-height: 11.5rem;
+  /* identical to box height */
+
+  letter-spacing: -0.025em;
+  @include breakpoint($xl-bp) {
+    font-size: 3.2rem;
+    line-height: 4.1rem;
+  }
+}
+
+h2,.h2 {
+  font-weight: 500;
+  font-size: 3.6rem;
+  line-height: 4.6rem;
+  /* identical to box height */
+  
+  letter-spacing: -0.025em;
+  @include breakpoint($xl-bp) {
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+  }
+}
+
+h3,.h3 {
+  font-weight: 500;
+  font-size: 3.2rem;
+  line-height: 4.1rem;
+  letter-spacing: -0.025em;
+  @include breakpoint($xl-bp) {
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+  }
+}
+
+.dark {
+  .page-button {
+    background-color: var(--white);
+    color: var(--black);
+  }
+}
+
+.page-button {
+  background-color: var(--black);
+  border-radius: 1rem;
+  padding: 1.8rem 4rem;
+  display: inline-block;
+
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  /* identical to box height */
+  
+  text-transform: uppercase;
+  
+  color: var(--white);
+  letter-spacing: 0;
+  transition: background-color .3s;
+  text-align: center;
+  @include breakpoint($sm-bp) {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    padding: 1.3rem;
+  }
+  &:hover {
+    background-color: var(--lgreen)
+  }
+}
+
+.page-link {
+
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.5rem;
+
+  text-decoration-line: underline;
+  text-decoration-skip-ink: none;
+  
+  color: var(--black);
+  transition: color .3s;
+  &:hover {
+    color: var(--green)
+  }
+}
+
 /* Vendors */
+@import './blocks/fancybox.scss';
 
 
 
 /* Blocks */
 
 @import './blocks/menu.scss';
-@import './blocks/swiper.scss';
 @import './blocks/main.scss';
 @import './blocks/header.scss';
 @import './blocks/footer.scss';
+@import './blocks/catalog.scss';
+@import './blocks/product.scss';
+@import './blocks/set.scss';
+@import './blocks/portfolio.scss';
+@import './blocks/payment.scss';
+@import './blocks/contacts.scss';
+@import './blocks/modal.scss';
 
 
 
@@ -67,38 +229,18 @@ svg {
 .show {
   display: block;
 }
-
-.container {
-  padding-right: 4rem;
-  padding-left: 4rem;
-  @include breakpoint($cos-bp) {
-    padding-right: 5rem;
-    padding-left: 5rem;
-  }
+.desctop-hidden {
+  display: none;
   @include breakpoint($xl-bp) {
-    padding-right: 2rem;
-    padding-left: 2rem;
+    display: block;
   }
-  @include breakpoint($sm-bp) {
-    padding-right: 2.5rem;
-    padding-left: 2.5rem;
+}
+.mob-hidden {
+  @include breakpoint($xl-bp) {
+    display: none;
   }
 }
 
-.img-contain {
-  display: block;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-}
-.img-cover {
-  display: block;
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.font-bold {
+  font-weight: 700;
 }

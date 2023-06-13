@@ -1,0 +1,123 @@
+.set-title {
+  font-weight: 700;
+  @include breakpoint($xl-bp) {
+    font-size: 3.2rem;
+    line-height: 4.1rem;
+  }
+}
+
+.set-img-1 {
+  height: 63.3rem;
+  width: 100%;
+  border-radius: 1.3rem;
+  margin-top: 4rem;
+
+  @include breakpoint($sm-bp) {
+    height: 22.2rem;
+    margin-top: 2rem;
+  }
+}
+
+.set-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1.58fr;
+  column-gap: 14.5rem;
+  row-gap: 3rem;
+
+  @include breakpoint($xl-bp) {
+    grid-template-columns: 1fr;
+  }
+
+  @include breakpoint($sm-bp) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  h2,
+  h3 {
+    font-weight: 700;
+  }
+
+  h3 {
+    margin-bottom: 3rem;
+    @include breakpoint($sm-bp) {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+.set-img-2 {
+  height: 66.9rem;
+  border-radius: 1.3rem;
+  @include breakpoint($sm-bp) {
+    height: 25.3rem;
+  }
+}
+
+.set-left {
+  @include breakpoint($sm-bp) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  h2 {
+    margin-bottom: 4rem;
+    @include breakpoint($sm-bp) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  p {
+    margin-top: 3.6rem;
+    @include breakpoint($sm-bp) {
+      margin-top: 2rem;
+    }
+  }
+}
+
+.set-right {
+  @include breakpoint($sm-bp) {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  ol {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6rem;
+    counter-reset: num;
+    @include breakpoint($xl-bp) {
+      gap: 3rem;
+    }
+    @include breakpoint($sm-bp) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    li {
+      counter-increment: num;
+
+      &::before {
+        content: counter(num, decimal-leading-zero)".";
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 3.1rem;
+        /* identical to box height */
+
+        letter-spacing: -0.025em;
+        display: block;
+        margin-bottom: 2rem;
+        @include breakpoint($xl-bp) {
+          font-size: 2rem;
+          line-height: 2.5rem;
+        }
+        @include breakpoint($sm-bp) {
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.mob-px-0 {
+  @include breakpoint($sm-bp) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

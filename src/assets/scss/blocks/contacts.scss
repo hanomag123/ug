@@ -1,0 +1,109 @@
+.contacts {
+  display: grid;
+  grid-template-columns: 1.36fr 1fr;
+  column-gap: 19.3rem;
+  row-gap: 9rem;
+
+  @include breakpoint($xl-bp) {
+    grid-template-columns: 1fr;
+  }
+
+  @include breakpoint($sm-bp) {
+    gap: 8rem;
+  }
+
+
+}
+
+.contacts-left {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem; 
+  @include breakpoint($xl-bp) {
+    flex-direction: column;
+  }
+}
+
+.contacts-block-right {
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  letter-spacing: normal;
+  @include breakpoint($sm-bp) {
+    gap: 3rem;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+  }
+  a {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    transition: color .3s;
+
+    &:hover {
+      color: var(--green);
+    }
+  }
+}
+
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contacts-address {
+  max-width: 32.2rem;
+}
+
+.contacts-social {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  @include breakpoint($sm-bp) {
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  li {
+    background-color: #D9D9D9;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+}
+
+.contacts-form-title {
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+  letter-spacing: -0.025em;
+}
+
+.contacts-form {
+
+  margin-top: 3rem;
+
+}
+
+.contacts-map {
+  width: 100%;
+  height: 60.5rem;
+  margin-top: 9rem;
+  @include breakpoint($sm-bp) {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 8rem;
+  }
+  & > div {
+    width: 100%;
+    height: 100%;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
+
