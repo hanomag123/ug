@@ -176,6 +176,7 @@
   align-items: flex-end;
   width: max-content;
   margin-left: auto;
+  position: relative;
   @include breakpoint($xl-bp) {
     grid-column: 2 span;
     align-items: center;
@@ -183,6 +184,22 @@
     margin-left: unset;
     width: 100%;
     letter-spacing: normal;
+  }
+  & > button {
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
+  }
+  .search-form {
+    display: none;
+  }
+  .active {
+    color: var(--green);
+    text-decoration-color: var(--green);
+    & + .search-form {
+      display: block;
+    }
   }
 }
 

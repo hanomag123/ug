@@ -57,6 +57,23 @@
     margin-left: 0;
     grid-column: 2 span;
   }
+
+  &.--footer {
+    position: absolute;
+    animation: fadeEffect .3s;
+    margin-left: 0;
+    width: 25.4rem;
+    right: 0;
+    top: 0;
+    input {
+      background-color: var(--white)
+    }
+    @include breakpoint($xl-bp) {
+      bottom: calc(100% + 2rem);
+      top: unset;
+      width: 100%;
+    }
+  }
 }
 
 .search-input {

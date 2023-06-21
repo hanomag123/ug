@@ -428,7 +428,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  const filterButtons = document.querySelectorAll('.filter-button');
+  const filterButtons = document.querySelectorAll('.filter-button, .footer-search > button');
 
   if (filterButtons.length) {
     filterButtons.forEach(el => {
