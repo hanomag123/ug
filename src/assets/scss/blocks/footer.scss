@@ -117,8 +117,20 @@
   .social-item {
     width: 3rem;
     height: 3rem;
-    background-color: var(--grey);
+    background-color: var(--white);
     border-radius: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: brightness(0);
+      transition: filter .3s;
+    }
+    &:hover {
+      img {
+        filter: brightness(1);
+      }
+    }
   }
 }
 .footer-politics {

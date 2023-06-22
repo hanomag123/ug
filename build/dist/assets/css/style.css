@@ -3708,8 +3708,18 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 .social-list .social-item {
   width: 3rem;
   height: 3rem;
-  background-color: var(--grey);
+  background-color: var(--white);
   border-radius: 100%;
+}
+.social-list .social-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0);
+  transition: filter 0.3s;
+}
+.social-list .social-item:hover img {
+  filter: brightness(1);
 }
 
 .footer-politics {
