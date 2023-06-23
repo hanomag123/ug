@@ -583,33 +583,33 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  const headerBtn = document.querySelectorAll('.header-btn');
+  // const headerBtn = document.querySelectorAll('.header-btn');
 
-  function closeCatalogs() {
-    if (!event.target.closest('.menu-wrapper') && !event.target.closest('.header-btn.open')) {
-      headerBtn.forEach(el => {
-        el.classList.remove('open');
-      })
-      document.removeEventListener('click', closeCatalogs);
-      enableScroll();
-    }
-  }
+  // function closeCatalogs() {
+  //   if (!event.target.closest('.menu-wrapper') && !event.target.closest('.header-btn.open')) {
+  //     headerBtn.forEach(el => {
+  //       el.classList.remove('open');
+  //     })
+  //     document.removeEventListener('click', closeCatalogs);
+  //     enableScroll();
+  //   }
+  // }
 
-  if (headerBtn.length) {
-    headerBtn.forEach(el => {
-      el.addEventListener('click', function () {
-        this.classList.toggle('open');
+  // if (headerBtn.length) {
+  //   headerBtn.forEach(el => {
+  //     el.addEventListener('click', function () {
+  //       this.classList.toggle('open');
 
-        if (this.classList.contains('open') && !xl.matches) {
-          document.addEventListener('click', closeCatalogs);
-          disableScroll();
-        } else {
-          enableScroll();
-          document.removeEventListener('click', closeCatalogs);
-        }
-      })
-    })
-  }
+  //       if (this.classList.contains('open') && !xl.matches) {
+  //         document.addEventListener('click', closeCatalogs);
+  //         disableScroll();
+  //       } else {
+  //         enableScroll();
+  //         document.removeEventListener('click', closeCatalogs);
+  //       }
+  //     })
+  //   })
+  // }
 
 
 });
