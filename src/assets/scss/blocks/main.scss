@@ -784,6 +784,10 @@
   @include breakpoint($xl-bp) {
     height: 22.5rem;
   }
+
+  img {
+    animation: fadeEffect 1s;
+  }
 }
 
 .design-button {

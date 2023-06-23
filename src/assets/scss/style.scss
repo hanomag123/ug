@@ -244,3 +244,9 @@ h3,.h3 {
 .font-bold {
   font-weight: 700;
 }
+
+.scroll-disabled {
+  .out {
+    transform: translate3d(0, 0, 0); 
+  }
+}

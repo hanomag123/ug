@@ -40,8 +40,7 @@
   @include breakpoint($xl-bp) {
     position: relative;
     z-index: 15;
-  }
-  @include breakpoint($sm-bp) {
+
     width: 10.4rem;
     height: 3.5rem;
   }

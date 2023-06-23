@@ -2214,6 +2214,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   line-height: 2.3rem;
   font-weight: 500;
   letter-spacing: 0em;
+  height: 100%;
 }
 @media (max-width: 1024px) {
   .menu {
@@ -2225,7 +2226,6 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     transform: translate3d(0, -100%, 0);
     transition: transform 0.3s;
     width: 100%;
-    height: 100%;
     grid-template-columns: repeat(1, 1fr);
     gap: 4rem;
     font-size: 3.6rem;
@@ -2239,38 +2239,120 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     transform: translate3d(0, 0, 0);
   }
 }
+.menu nav {
+  height: 100%;
+}
 @media (max-width: 1024px) {
   .menu nav {
     padding-left: 3.2rem;
     padding-right: 3rem;
     width: 100%;
-    height: 100%;
     overflow: auto;
     display: flex;
     padding-bottom: 3rem;
   }
 }
-.menu nav ul {
+.menu nav > ul {
   display: flex;
   align-items: center;
   gap: 4.5rem;
+  position: relative;
+  height: 100%;
 }
 @media (max-width: 1024px) {
-  .menu nav ul {
+  .menu nav > ul {
     flex-direction: column;
     gap: 3rem;
     align-items: flex-start;
     margin-top: auto;
+    height: auto;
   }
 }
+.menu nav > ul > li {
+  height: 100%;
+}
+.menu nav > ul > li:hover .menu-wrapper {
+  display: grid;
+  animation: fadeEffect 0.3s;
+}
+@media (max-width: 1024px) {
+  .menu nav > ul > li:hover .menu-wrapper {
+    display: flex;
+    animation: unset;
+  }
+}
+.menu nav > ul > li > .menu-wrapper {
+  position: absolute;
+  top: calc(100% - 0.2rem);
+  left: 0;
+  background-color: var(--white);
+  border-radius: 1rem;
+  border: 0.1rem solid #C3C3C3;
+  padding: 5rem 4rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  display: none;
+}
+@media (max-width: 1024px) {
+  .menu nav > ul > li > .menu-wrapper {
+    display: block;
+    position: static;
+    padding: 0;
+    border: 0;
+  }
+}
+.menu nav > ul > li > .menu-wrapper ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 4rem;
+  column-gap: 2.3rem;
+}
+@media (max-width: 1024px) {
+  .menu nav > ul > li > .menu-wrapper ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+}
+.menu nav > ul > li > .menu-wrapper ul > li a {
+  display: flex;
+  gap: 1.5rem;
+}
+.menu nav > ul > li > .menu-wrapper ul > li a:hover .img-cover {
+  border-color: var(--lgreen);
+}
+.menu nav > ul > li > .menu-wrapper ul > li:nth-child(2n+2) {
+  padding-left: 2.4rem;
+}
+@media (max-width: 1024px) {
+  .menu nav > ul > li > .menu-wrapper ul > li:nth-child(2n+2) {
+    padding-left: 0;
+  }
+}
+.menu nav > ul > li > .menu-wrapper ul > li .img-cover {
+  width: 11rem;
+  height: 11rem;
+  flex: 0 0 auto;
+  border-radius: 1.3rem;
+  border: 0.2rem solid transparent;
+  transition: border-color 0.3s;
+}
+.menu nav > ul > li > a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
 .menu nav .active {
-  color: var(--green);
+  color: var(--lgreen);
 }
 .menu nav a {
   transition: color 0.3s;
 }
 .menu nav a:hover {
-  color: var(--green);
+  color: var(--lgreen);
 }
 
 .menu-button {
@@ -2355,6 +2437,12 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   height: 100%;
 }
 
+.header-btn {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
 .main {
   display: grid;
   grid-template-columns: 1fr 66rem;
@@ -3149,6 +3237,9 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     height: 22.5rem;
   }
 }
+.design-img img {
+  animation: fadeEffect 1s;
+}
 
 .design-button {
   display: none;
@@ -3510,10 +3601,6 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   .header__logo {
     position: relative;
     z-index: 15;
-  }
-}
-@media (max-width: 500px) {
-  .header__logo {
     width: 10.4rem;
     height: 3.5rem;
   }
@@ -4493,14 +4580,29 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 .product-desc {
   grid-row: 2 span;
 }
-.product-desc ul {
+.product-desc .accordion-wrapper {
   margin-top: 1rem;
+}
+@media (max-width: 500px) {
+  .product-desc .accordion-wrapper {
+    margin-top: 1.4rem;
+  }
+}
+.product-desc .accordion-wrapper .hide {
+  display: none;
+  animation: fadeEffect 0.3s;
+}
+.product-desc .accordion-wrapper.active .hide {
+  display: flex;
+}
+.product-desc ul {
+  max-width: 100%;
+  overflow: hidden;
 }
 @media (max-width: 500px) {
   .product-desc ul {
     font-size: 1.6rem;
     line-height: 2rem;
-    margin-top: 1.4rem;
   }
 }
 .product-desc ul li {
@@ -4525,7 +4627,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 }
 
 .product-button {
-  margin-top: 4.9rem;
+  margin-top: 3rem;
   width: 100%;
 }
 @media (max-width: 500px) {
@@ -4565,6 +4667,45 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     padding-top: 6rem;
     gap: 4rem;
   }
+}
+
+.accordion-wrapper {
+  overflow: hidden;
+}
+
+.accordion-button {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  transition: color 0.3s;
+}
+.accordion-button.active {
+  color: var(--green);
+}
+.accordion-button.active::after {
+  filter: brightness(1);
+  transform: rotate(180deg);
+}
+.accordion-button:hover {
+  color: var(--green);
+}
+.accordion-button:hover::after {
+  filter: brightness(1);
+}
+.accordion-button::after {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='21' viewBox='0 0 16 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.29289 20.7071C7.68342 21.0976 8.31658 21.0976 8.70711 20.7071L15.0711 14.3431C15.4616 13.9526 15.4616 13.3195 15.0711 12.9289C14.6805 12.5384 14.0474 12.5384 13.6569 12.9289L8 18.5858L2.34315 12.9289C1.95262 12.5384 1.31946 12.5384 0.928932 12.9289C0.538407 13.3195 0.538407 13.9526 0.928932 14.3431L7.29289 20.7071ZM7 -4.37115e-08L7 20L9 20L9 4.37115e-08L7 -4.37115e-08Z' fill='%2356B800'/%3E%3C/svg%3E%0A");
+  background-size: contain;
+  width: 1.6rem;
+  height: 2.1rem;
+  display: inline-block;
+  filter: brightness(0);
+  transition: transform 0.3s, filter 0.3s;
 }
 
 .set-title {
@@ -5084,4 +5225,8 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 
 .font-bold {
   font-weight: 700;
+}
+
+.scroll-disabled .out {
+  transform: translate3d(0, 0, 0);
 }

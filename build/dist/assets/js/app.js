@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Get the current page scroll position;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
       // if any scroll is attempted, set this to the previous value;
       window.onscroll = function () {
         window.scrollTo(scrollLeft, scrollTop);
@@ -58,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    enableScroll() {
+    enableScroll() { 
       document.documentElement.style.overflow = null;
       window.onscroll = function () { };
     }
@@ -111,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     document.documentElement.style.setProperty('scroll-behavior', 'auto');
-
+    document.documentElement.classList.add('scroll-disabled');
     // if any scroll is attempted, set this to the previous value;
     window.onscroll = function () {
       window.scrollTo(scrollLeft, scrollTop);
@@ -119,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function enableScroll() {
+    document.documentElement.classList.remove('scroll-disabled');
     document.documentElement.style.setProperty('scroll-behavior', null);
     window.onscroll = function () { };
   }
@@ -535,6 +535,81 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
+  const accordionWrappers = document.querySelectorAll('[data-lines]');
+
+  if (accordionWrappers.length) {
+    accordionWrappers.forEach(el => {
+      const numberOfLines = +el.dataset.lines;
+      const slides = el.querySelectorAll('li');
+
+      if (numberOfLines) {
+        slides.forEach((el, index) => {
+          if (index + 1 > numberOfLines) {
+            el.classList.add('hide');
+          }
+        })
+      }
+    })
+  }
+
+  const accordionButtons = document.querySelectorAll('.accordion-button');
+
+  if (accordionButtons.length) {
+    accordionButtons.forEach(el => {
+      el.addEventListener('click', function () {
+        let showText = this.dataset.show;
+        if (this.previousElementSibling) {
+          this.previousElementSibling.classList.toggle('active');
+          this.classList.toggle('active');
+          if (showText) {
+            this.dataset.show = this.innerHTML;
+            this.innerHTML = showText;
+          }
+          if (!this.classList.contains('active')) {
+
+            const header = document.querySelector('header');
+            let headerH = null;
+            if (header) {
+              headerH = header.getBoundingClientRect().height;
+            }
+            const yOffset = headerH ? -headerH : -200;
+            const y = this.previousElementSibling.parentElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+            window.scrollTo({top: y, behavior: 'auto'});
+
+          }
+        }
+      })
+    })
+  }
+
+  const headerBtn = document.querySelectorAll('.header-btn');
+
+  function closeCatalogs() {
+    if (!event.target.closest('.menu-wrapper') && !event.target.closest('.header-btn.open')) {
+      headerBtn.forEach(el => {
+        el.classList.remove('open');
+      })
+      document.removeEventListener('click', closeCatalogs);
+      enableScroll();
+    }
+  }
+
+  if (headerBtn.length) {
+    headerBtn.forEach(el => {
+      el.addEventListener('click', function () {
+        this.classList.toggle('open');
+
+        if (this.classList.contains('open') && !xl.matches) {
+          document.addEventListener('click', closeCatalogs);
+          disableScroll();
+        } else {
+          enableScroll();
+          document.removeEventListener('click', closeCatalogs);
+        }
+      })
+    })
+  }
 
 
 });
