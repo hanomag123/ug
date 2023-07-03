@@ -144,9 +144,9 @@
   }
 
   .presentation-bot {
-    margin-top: 3.1rem;
+    padding-top: 3.1rem;
     @include breakpoint($sm-bp) {
-      margin-top: 2.1rem;
+      padding-top: 2.1rem;
     }
   }
 }
