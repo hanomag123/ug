@@ -1274,6 +1274,12 @@ button.swiper-pagination-bullet {
   padding-right: 8rem;
   padding-left: 8rem;
 }
+@media (min-width: 2100px) {
+  .container {
+    padding-left: 20rem;
+    padding-right: 20rem;
+  }
+}
 @media (max-width: 1024px) {
   .container {
     padding-right: 4rem;
@@ -3620,6 +3626,12 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   width: 40rem;
   margin-left: 35.5rem;
 }
+@media (min-width: 2100px) {
+  .search-form {
+    margin-left: auto;
+    margin-right: 4rem;
+  }
+}
 @media (max-width: 1024px) {
   .search-form {
     width: 100%;
@@ -4488,10 +4500,18 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   position: relative;
   height: 63.3rem;
 }
+@media (min-width: 2100px) {
+  .product-swiper .product-image {
+    height: 50rem;
+  }
+}
 @media (max-width: 500px) {
   .product-swiper .product-image {
     height: 25.1rem;
   }
+}
+.product-swiper .product-color-wrapper {
+  display: none;
 }
 .product-swiper .product-color {
   border: 0.2rem solid var(--black);
@@ -4550,6 +4570,12 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   position: relative;
   cursor: pointer;
 }
+@media (min-width: 2100px) {
+  .product-colors-list .product-color {
+    width: 10rem;
+    height: 10rem;
+  }
+}
 @media (max-width: 500px) {
   .product-colors-list .product-color {
     width: 4rem;
@@ -4575,7 +4601,45 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 .product-colors-list .product-color.active::before {
   border-color: var(--green);
 }
-
+.product-colors-list .product-color-wrapper {
+  position: relative;
+}
+.product-colors-list .product-color-wrapper.active .product-color::before {
+  border-color: var(--green);
+}
+.product-colors-list .product-color-wrapper.open-modal.active .product-color-modal {
+  display: flex;
+}
+.product-colors-list .product-color-modal {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 2rem);
+  z-index: 2;
+  background-color: var(--white);
+  border-radius: 1rem;
+  padding: 2rem;
+  gap: 2rem;
+  width: min-content;
+  width: 53rem;
+  display: none;
+  box-shadow: 0px 0px 1rem 0.5rem rgba(0, 0, 0, 0.3);
+  animation: fadeEffect 0.7s;
+}
+@media (max-width: 1024px) {
+  .product-colors-list .product-color-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: calc(100% - 4rem);
+  }
+}
+.product-colors-list .product-modal-wrapper {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 2rem;
+  flex: 0 0 auto;
+}
 .product-pass-img {
   margin-top: 2rem;
   height: 26.5rem;

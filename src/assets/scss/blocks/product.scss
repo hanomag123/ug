@@ -115,9 +115,17 @@
     position: relative;
     height: 63.3rem;
 
+    @include min($lg-bp) {
+      height: 50rem;
+    }
+
     @include breakpoint($sm-bp) {
       height: 25.1rem;
     }
+  }
+
+  .product-color-wrapper {
+    display: none;
   }
 
   .product-color {
@@ -135,6 +143,9 @@
     }
   }
 }
+
+
+
 
 .product-bot {
   margin-top: 6rem;
@@ -175,6 +186,11 @@
     position: relative;
     cursor: pointer;
 
+    @include min($lg-bp) {
+      width: 10rem;
+      height: 10rem;
+    }
+
     @include breakpoint($sm-bp) {
       width: 4rem;
       height: 4rem;
@@ -206,6 +222,54 @@
       }
     }
   }
+
+  .product-color-wrapper {
+    position: relative;
+
+    &.active {
+      .product-color {
+        &::before {
+          border-color: var(--green);
+        }
+      }
+    }
+
+    &.open-modal.active .product-color-modal {
+      display: flex;
+    }
+  }
+
+  .product-color-modal {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 2rem);
+    z-index: 2;
+    background-color: var(--white);
+    border-radius: 1rem;
+    padding: 2rem;
+    gap: 2rem;
+    width: min-content;
+    width: 53rem;
+    display: none;
+    box-shadow: 0px 0px 1rem 0.5rem rgba($color: #000000, $alpha: 0.3);
+    animation: fadeEffect .7s;
+    @include breakpoint($xl-bp) {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: calc(100% - 4rem);
+    }
+  }
+
+  .product-modal-wrapper {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 2rem;
+    flex: 0 0 auto;
+  }
+
+  .product-modal-text {}
 }
 
 .product-pass-img {
@@ -219,8 +283,10 @@
 
 .product-desc {
   grid-row: 2 span;
+
   .accordion-wrapper {
     margin-top: 1rem;
+
     @include breakpoint($sm-bp) {
       margin-top: 1.4rem;
     }
@@ -236,6 +302,7 @@
       }
     }
   }
+
   ul {
     max-width: 100%;
     overflow: hidden;
@@ -324,19 +391,24 @@
   justify-content: space-between;
   width: 100%;
   transition: color .3s;
+
   &.active {
-    color:  var(--green);
+    color: var(--green);
+
     &::after {
       filter: brightness(1);
       transform: rotate(180deg);
     }
   }
+
   &:hover {
-    color:  var(--green);
+    color: var(--green);
+
     &::after {
       filter: brightness(1);
     }
   }
+
   &::after {
     content: '';
     background-image: url("data:image/svg+xml,%3Csvg width='16' height='21' viewBox='0 0 16 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.29289 20.7071C7.68342 21.0976 8.31658 21.0976 8.70711 20.7071L15.0711 14.3431C15.4616 13.9526 15.4616 13.3195 15.0711 12.9289C14.6805 12.5384 14.0474 12.5384 13.6569 12.9289L8 18.5858L2.34315 12.9289C1.95262 12.5384 1.31946 12.5384 0.928932 12.9289C0.538407 13.3195 0.538407 13.9526 0.928932 14.3431L7.29289 20.7071ZM7 -4.37115e-08L7 20L9 20L9 4.37115e-08L7 -4.37115e-08Z' fill='%2356B800'/%3E%3C/svg%3E%0A");

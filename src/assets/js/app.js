@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const productSwiper = document.querySelector('.product-swiper');
 
   if (productSwiper) {
-    const productColors = productSwiper.querySelectorAll('.product-color');
+    const productColors = productSwiper.querySelectorAll('.product-color-wrapper');
 
     if (productColors.length) {
       const colorsList = document.querySelector('.product-colors-list');
@@ -381,13 +381,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (colorsList.length && swiper) {
       colorsList.forEach((el, index) => {
-        el.addEventListener('click', () => {
+        el.addEventListener('click', function () {
+          colorsList.forEach(color => {
+            if (this !== color) {
+              color.classList.remove('open-modal')
+            }
+          })
+          this.classList.toggle('open-modal')
+          if (this.classList.contains('open-modal')) {
+              document.addEventListener('click', clickModalHandler);
+          } else {
+            document.removeEventListener('click', clickModalHandler);
+          }
+
           swiper.slideToLoop(index, 800);
         })
       })
     }
 
-
+    function clickModalHandler () {
+      if (!event.target.closest('.open-modal')) {
+        const modals = document.querySelectorAll('.open-modal')
+        if (modals.length) {
+          modals.forEach(el => el.classList.remove('open-modal'))
+          document.removeEventListener('click', clickModalHandler);
+        }
+      }
+    }
 
   }
 
